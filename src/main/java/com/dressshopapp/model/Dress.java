@@ -11,33 +11,34 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
 @Getter
 @Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="dress_app_users")
-public class User {
+@Entity(name="dress_list")
+public class Dress {
 	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //AutoIncrement
 	
-	private Integer id;
+	private Integer dress_id_no;
 	
 	
-	private String name;
+	private String dress_name;
 	
 	
-	private String email_id;
+	private String brand_name;
 	
-	private String password;
+	private String color;
 	
-	private String mobile_number;
+	private String size;
 	
+	private Integer price;
 	
+}
+
 
 	
 	
-}
