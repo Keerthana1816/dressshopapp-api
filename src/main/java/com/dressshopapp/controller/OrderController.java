@@ -26,7 +26,7 @@ public class OrderController {
 
 	}
 
-	@GetMapping("/orderlist") // list all employees
+	@GetMapping("dress/orderlist") // list all employees
 	public List<Order> findAll() {
 		List<Order> orderlist = orderRepository.findAll();
 		return orderlist;
@@ -38,10 +38,10 @@ public class OrderController {
 
 	}
 
-	@PutMapping("order/{dress_id_no}")
-	public void update(@PathVariable("dress_id_no") Integer dress_id_no) {
+	@PutMapping("order/{dressid}")
+	public void update(@PathVariable("dressid") Integer dressid) {
 		Order order = new Order();
-		order.setDress_id_no(dress_id_no);
-		orderRepository.save(dress_id_no);
+		order.setDressid(dressid);
+		orderRepository.save(dressid);
 	}
 }

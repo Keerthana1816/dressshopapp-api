@@ -1,6 +1,7 @@
 package com.dressshopapp.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dressshopapp.dao.DressRepository;
@@ -26,7 +28,7 @@ public class DressController {
 
 	}
 
-	@GetMapping("/dresslist") // list all employees
+	@GetMapping("dress/dresslist") // list all employees
 	public List<Dress> findAll() {
 		List<Dress> dresslist = dressRepository.findAll();
 		return dresslist;
@@ -37,11 +39,29 @@ public class DressController {
 		dressRepository.deleteById(dressid);
 
 	}
+	@GetMapping("dress/finddress/{id}")
+	public Dress findById(@PathVariable("id") Integer id) {
+		Optional<Dress> dress =dressRepository.findById(id);
+		if (dress.isPresent()) {
+			return dress.get();
+		} else {
+			return null;
+		}
+	}
+	@GetMapping("dress/finddress/color")
+	public Dress findByColor(@PathVariable("color") String  color) {
+		Optional<Dress> dress =dressRepository.findByColor("color");
+		if (dress.isPresent()) {
+			return dress.get();
+		} else {
+			return null;
+		}
 
-	@PutMapping("dress/{dressname}")
-	public void update(@PathVariable("dressname") String dressid) {
-		Dress dress = new Dress();
-		dress.setDress_name(dressid);
+	}
+	@PutMapping("dress/{id}")
+	public void update(@PathVariable("id") Integer id, @RequestBody Dress dress) {
+
+		dress.setId(id);
 		dressRepository.save(dress);
 	}
 }

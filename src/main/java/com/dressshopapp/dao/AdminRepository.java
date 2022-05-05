@@ -1,21 +1,15 @@
 package com.dressshopapp.dao;
 
+import com.dressshopapp.model.Admin;
+
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dressshopapp.model.Dress;
-
 @Repository
-public interface DressRepository extends JpaRepository<Dress,Integer> {
+public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
-	Optional<Dress> findByColor(String string);
-
-
-
-	
-
-	
+	Optional<Admin> findByEmailAndPassword(String email, String password);
 
 }

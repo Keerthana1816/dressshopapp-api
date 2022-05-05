@@ -8,7 +8,7 @@ import com.dressshopapp.model.Order;
 @Repository
 public interface OrderRepository extends JpaRepository<Order,Integer> {
 
-	void save(Integer dress_id_no);
+	void save(Integer dressid);
 
 
 

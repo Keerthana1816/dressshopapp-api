@@ -1,5 +1,6 @@
 package com.dressshopapp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,16 +24,18 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //AutoIncrement
 	
-	private Integer order_id;
+	@Column(name = "order_id")
+	private Integer id;
 	
-	
-	private Integer dress_id_no;
+	@Column(name="dress_id_no")
+	private Integer dressid;
 	
 	private Integer price;
 	
 	private Integer quantity;
 	
-	private Integer total_price;
+	@Column(name="total_price")
+	private Integer totalprice;
 	
 }
 

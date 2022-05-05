@@ -1,6 +1,5 @@
 package com.dressshopapp.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,35 +16,17 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="dress_list")
-public class Dress {
-	
+@Entity(name = "dress_app_admin")
+public class Admin {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //AutoIncrement
-	
-	@Column(name = "dress_id_no")
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // AutoIncrement
 	private Integer id;
-	
-	@Column(name = "dress_name")
-	private String dressname;
-	
-	@Column(name="brand_name")
-	private String brandname;
-	
-	private String color;
-	
-	private String size;
-	
-	private Integer price;
 
-	
+	private String name;
 
-	
-	}
-	
+	private String email;
 
+	private String password;
 
-
-	
-	
+}
