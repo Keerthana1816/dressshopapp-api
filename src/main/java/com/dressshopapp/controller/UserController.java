@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dressshopapp.dao.UserRepository;
+import com.dressshopapp.dto.MessageDTO;
 import com.dressshopapp.model.User;
 import com.dressshopapp.service.UserService;
 
@@ -28,19 +29,22 @@ public class UserController {
 	public ResponseEntity  <String> save(@RequestBody User user){
 		try {
 			userService.save(user);
-			return new ResponseEntity<String> ("success",HttpStatus.OK);
+			return new ResponseEntity<String> (HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<String> (e.getMessage(),HttpStatus.BAD_REQUEST);      
 		}
 	}
 	
 	@PostMapping("user/login")
-	public String login(@RequestBody User user) {
-		return userService.login(user);
-
-		
-	}
-
+	public ResponseEntity  <?> login(@RequestBody User user){
+		try {
+			User user1 = userService.login(user);
+			return new ResponseEntity<> (user1, HttpStatus.OK);
+		}catch(Exception e) {
+			MessageDTO dto = new MessageDTO(e.getMessage());
+			return new ResponseEntity<> (dto,HttpStatus.BAD_REQUEST);
+		}
+	}	
 	@GetMapping("user/list") // list all users
 	public List<User> findAll() {
 		List<User> userlist = null;
@@ -62,7 +66,7 @@ public class UserController {
 	@PutMapping("user/{id}")
 	public ResponseEntity<String> update (@PathVariable("id") Integer id, @RequestBody User user){
 		try {
-			userService.save(user);
+			userService.update(id,user);
 			return new ResponseEntity<String> ("success",HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<String> (e.getMessage(),HttpStatus.BAD_REQUEST);      

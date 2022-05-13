@@ -17,25 +17,29 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="order_list")
-public class Order {
+@Entity(name="men_dresses")
+public class MenDress {
 	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //AutoIncrement
 	
-	@Column(name = "order_id")
 	private Integer id;
 	
-	@Column(name="dress_id_no")
-	private Integer dressId;
+	@Column(name = "dress_name")
+	private String dressName;
+	
+	@Column(name="brand_name")
+	private String brandName;
+	
+	
+	private String size;
 	
 	private Integer price;
-	
-	private Integer quantity;
-	
-	@Column(name="total_price")
-	private Integer totalPrice;
-	
-}
 
+	@Column(name="image_url")
+	private String imageUrl;
+
+	
+	}
+	

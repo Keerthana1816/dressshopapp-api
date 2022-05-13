@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dressshopapp.dao.AdminRepository;
+import com.dressshopapp.dto.MessageDTO;
 import com.dressshopapp.model.Admin;
 import com.dressshopapp.service.AdminService;
 
@@ -23,15 +24,20 @@ public class AdminController {
 	public ResponseEntity<String> save(@RequestBody Admin admin) {
 		try {
 			adminService.save(admin);
-			return new ResponseEntity<String>("success", HttpStatus.OK);
+			return new ResponseEntity<String> (HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 
 	@PostMapping("admin/login")
-	public String login(@RequestBody Admin admin) {
-		return adminService.login(admin);
-
-	}
+	public ResponseEntity  <?> login(@RequestBody Admin admin){
+		try {
+			Admin admin1 = adminService.login(admin);
+			return new ResponseEntity<> (admin1, HttpStatus.OK);
+		}catch(Exception e) {
+			MessageDTO dto = new MessageDTO(e.getMessage());
+			return new ResponseEntity<> (dto,HttpStatus.BAD_REQUEST);
+		}
+}
 }

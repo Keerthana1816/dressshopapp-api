@@ -17,9 +17,13 @@ public class UserValidation {
 		} else {
 			throw new Exception("Enter a strong password");
 		}
-		if (user.getMobilenumber().length() == 10) {
+		if (user.getMobileNumber().length() == 10) {
 		} else {
 			throw new Exception("The mobile number should contain 10 digits");
+		}
+		if (user.getRole() != null ) {
+		} else {
+			throw new Exception("The role cannot be empty");
 		}
 		System.out.println("You have registerd successfully");
 

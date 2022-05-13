@@ -28,10 +28,10 @@ public class Dress {
 	private Integer id;
 	
 	@Column(name = "dress_name")
-	private String dressname;
+	private String dressName;
 	
 	@Column(name="brand_name")
-	private String brandname;
+	private String brandName;
 	
 	private String color;
 	
@@ -39,7 +39,8 @@ public class Dress {
 	
 	private Integer price;
 
-	
+	@Column(name="image_url")
+	private String imageUrl;
 
 	
 	}

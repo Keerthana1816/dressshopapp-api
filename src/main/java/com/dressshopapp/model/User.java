@@ -32,6 +32,8 @@ public class User {
 	private String password;
 
 	@Column(name = "mobile_number")
-	private String mobilenumber;
+	private String mobileNumber;
+	
+	private String role;
 
 }

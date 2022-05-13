@@ -25,12 +25,12 @@ public class AdminService {
 		}
 	}
 
-	public String login(@RequestBody Admin admin) {
+	public Admin login(@RequestBody Admin admin)throws Exception {
 		Optional<Admin> userObj = adminRepository.findByEmailAndPassword(admin.getEmail(), admin.getPassword());
 		if (userObj.isPresent()) {
-			return "login is successful";
+			return userObj.get();
 		} else {
-			return "login is failed";
+			throw new Exception("Invalid Login Credentials");
 		}
 	}
 }

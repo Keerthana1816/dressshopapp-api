@@ -27,12 +27,12 @@ public class UserService {
 		}
 	}
 	
-	public String login(@RequestBody User user) {
+	public User login( User user) throws Exception {
 		Optional<User> userObj=userRepository.findByEmailAndPassword(user.getEmail(),user.getPassword());
 		if(userObj.isPresent()) {
-			return "success";
+			return userObj.get();
 		}else {
-		return "unsuccess";
+			throw new Exception("Invalid Login Credentials");
 		}
 }
 	public List<User> findAll() throws Exception {
